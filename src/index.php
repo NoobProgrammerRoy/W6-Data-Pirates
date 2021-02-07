@@ -1,5 +1,19 @@
 <?php
 session_start();
+require "config.php";
+
+if(isset($_POST['submit'])){
+  $name = $_POST['name'];
+  $email = $_POST['email'];
+  $message = $_POST['message'];
+
+  $stmt = mysqli_query($conn, "INSERT INTO contacts(c_name, c_email, c_message) VALUES ('$name', '$email', '$message')");
+  if($stmt){
+    header('Location: index.php');
+    return;
+  }
+}
+
 ?>
 
 <!doctype html>
@@ -62,18 +76,13 @@ session_start();
     <div class="container">
       <div class="text-center">
         <h2 class="section-heading text-uppercase">Contact</h2>
-        <h3 class="section-subheading text-muted">Be the part of the team. Be helpful.</h3>
+        <h3 class="section-subheading text-muted">Contact us for personal donations and queries.</h3>
       </div>
 
       <div class="row">
 
         <div class="col-lg-6">
           <div class="row">
-            <div class="col-lg-6 info">
-              <i class="fas fa-map"></i>
-              <h4>Address</h4>
-              <p>Goadbander road,<br>Thane, SP 456879</p>
-            </div>
             <div class="col-lg-6 info">
               <i class="fas fa-phone"></i>
               <h4>Call Us</h4>
@@ -82,32 +91,24 @@ session_start();
             <div class="col-lg-6 info">
               <i class="fas fa-envelope"></i>
               <h4>Email Us</h4>
-              <p>food@give.com<br>Donateforfood@gmail.com</p>
-            </div>
-            <div class="col-lg-6 info">
-              <i class="fas fa-clock"></i>
-              <h4>Working Hours</h4>
-              <p>Mon - Fri: 9AM to 5PM<br>Sunday: 9AM to 1PM</p>
+              <p>thesmilingthaal@give.com<br>
             </div>
           </div>
         </div>
         <div class="col-lg-6">
-          <form>
+          <form action="<?php $_SERVER['PHP_SELF']; ?>" method="POST">
             <div class="form-group">
-              <input placeholder="Your Name" type="text" name="name" class="form-control">
+              <input placeholder="Your Name" type="text" name="name" class="form-control" required>
             </div>
             <div class="form-group">
-              <input placeholder="Your Email" type="email" class="form-control" name="email">
+              <input placeholder="Your Email" type="email" class="form-control" name="email" required>
             </div>
             <div class="form-group">
-              <input placeholder="Subject" type="text" class="form-control" name="subject">
-            </div>
-            <div class="form-group">
-              <textarea placeholder="Message" class="form-control" name="message" rows="5"></textarea>
+              <textarea placeholder="Message" class="form-control" name="message" rows="5" required></textarea>
               <div class="validate"></div>
             </div>
             <div class="text-center">
-              <button type="submit" class="btn btn-danger rounded-cor">Send Message</button>
+              <button type="submit" class="btn btn-danger rounded-cor" name="submit">Send Message</button>
             </div>
           </form>
         </div>

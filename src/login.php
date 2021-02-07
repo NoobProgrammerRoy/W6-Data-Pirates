@@ -55,20 +55,20 @@ if (isset($_POST['submit'])) {
 				</div>
 				<div class="col-lg-7 px-5 py-5">
 					<h1 class="font-weight-bolf-py-3">The Smiling Thaal</h1>
-					<h4>Login to your account</h4>
+					<h4>Log into your account</h4>
                     <?php if(isset($_SESSION['message'])){ echo "<p class='alert alert-danger font-weight-bold'>".$_SESSION['message']."</p>"; unset($_SESSION['message']); } ?>
 					<form action="#" method="POST">
 						<div class="form-row">
 							<div class="col-lg-8">
 								<input class="form-control my-3 p-3"
-								placeholder="Email-Address" id="email" type="email" name="email" required>
+								placeholder="Email Address" id="email" type="email" name="email" required>
 							</div>
 						</div>
 						<!--  -->
 						<div class="form-row">
 							<div class="col-lg-8">
 								<input class="form-control my-3 p-3"
-								placeholder="Enter password" id="password" type="password" name="password" required>
+								placeholder="Password" id="password" type="password" name="password" required>
 							</div>
 						</div>
 						<!--  -->

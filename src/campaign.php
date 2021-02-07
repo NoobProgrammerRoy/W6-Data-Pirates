@@ -46,8 +46,8 @@ if (isset($_POST['submit'])) {
     <!--Project Section-->
     <section class="proj-section bg-light py-5 mt-5" id="project">
         <!-- Create a Campaign -->
-        <?php 
-        if(isset($_SESSION['id'])){
+        <?php
+        if (isset($_SESSION['id'])) {
             echo "
             <div class='container px-2'>
             <h2 class='text-uppercase text-center'>Start a Campaign</h2>
@@ -76,14 +76,14 @@ if (isset($_POST['submit'])) {
                         </form>
                         </div>
                         ";
-                    }
+        }
         ?>
         <!-- End of Campaign -->
         <div class="container py-3">
             <div class="text-center">
                 <h2 class="section-heading text-uppercase">latest campaigns</h2>
                 <h3 class="section-subheading text-muted">
-                Our campaigns across india.</h3>
+                    Our campaigns across india.</h3>
             </div>
             <div class="row">
                 <?php
@@ -112,11 +112,11 @@ if (isset($_POST['submit'])) {
                 ?>
                 <!---Project 1-->
 
-                </div>
+            </div>
         </div>
         </div>
         </div>
-        </section>
+    </section>
     <!--End of Project Section-->
 
     <!-- Project Modals-->
@@ -156,9 +156,10 @@ if (isset($_POST['submit'])) {
     }
     ?>
 
-    
+
     <?php
     require "templates/footer.php";
+
     ?>
 
     <!-- End of modal part -->
@@ -169,11 +170,11 @@ if (isset($_POST['submit'])) {
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
     <script>
-    const date = new Date()
+        const date = new Date()
         const myDate = date.toISOString().split('T')[0]
         document.getElementById('date').value = myDate
-        </script>
-        
-        </body>
-        
-        </html>
+    </script>
+
+</body>
+
+</html>
