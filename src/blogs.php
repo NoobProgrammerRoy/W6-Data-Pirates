@@ -3,8 +3,8 @@ session_start();
 require 'config.php';
 
 if (isset($_POST['submit'])) {
-    $title = $_POST['title'];
-    $content = $_POST['content'];
+    $title = htmlentities($_POST['title']);
+    $content = htmlentities($_POST['content']);
     $id = $_SESSION['id'];
     $temp_date = getdate();
     $date = $temp_date['year'] . "-" . $temp_date['mon'] . "-" . $temp_date['mday'];

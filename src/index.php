@@ -3,9 +3,9 @@ session_start();
 require "config.php";
 
 if(isset($_POST['submit'])){
-  $name = $_POST['name'];
-  $email = $_POST['email'];
-  $message = $_POST['message'];
+  $name = htmlentities($_POST['name']);
+  $email = htmlentities($_POST['email']);
+  $message = htmlentities($_POST['message']);
 
   $stmt = mysqli_query($conn, "INSERT INTO contacts(c_name, c_email, c_message) VALUES ('$name', '$email', '$message')");
   if($stmt){

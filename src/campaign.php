@@ -3,9 +3,9 @@ session_start();
 require "config.php";
 
 if (isset($_POST['submit'])) {
-    $title = $_POST['title'];
-    $date = $_POST['date'];
-    $description = $_POST['description'];
+    $title = htmlentities($_POST['title']);
+    $date = htmlentities($_POST['date']);
+    $description = htmlentities($_POST['description']);
     $id = $_SESSION['id'];
 
     $stmt = mysqli_query($conn, "INSERT INTO campaigns(c_title, c_date, c_description, c_vid) VALUES('$title', '$date', '$description', '$id')");
@@ -93,16 +93,26 @@ if (isset($_POST['submit'])) {
                     while ($row = mysqli_fetch_assoc($stmt)) {
                         echo "
                         <div class='col-lg-4 col-sm-6 mb-4'>
-                        <div class='project-item'>
+                        <div class='project-item' style='box-shadow: 0 0 4px #333;'>
                         <a class='project-link' data-toggle='modal' href='#projectModal" . $row['c_id'] . "'>
                         <div class='project-hover'>
                         <div class='project-hover-content'>
                         <i class='fas fa-plus fa-3x'></i>
                         </div>
-                        </div>
-                        <img src='../static/img/proj.jfif' class='img-fluid' alt=''>
-                        </a>
-                        <div class='project-caption'>
+                        </div>";
+                        $var = random_int(0,2);
+                        if($var == 0){
+                            echo "<img class='img-fluid d-block mx-auto' src='../static/img/family.jpg' alt='prop-1'/></a>";
+                        }
+                        else if($var == 1){
+                            echo "<img class='img-fluid d-block mx-auto' src='../static/img/food.jpg' alt='prop-1'/></a>";
+                        }
+                        else{
+                            echo "<img class='img-fluid d-block mx-auto' src='../static/img/waste.jpg' alt='prop-1'/></a>";
+                        }
+                        // <img src='../static/img/proj.jfif' class='img-fluid' alt=''>
+                        // </a>
+                        echo "<div class='project-caption'>
                         <div class='project-caption-heading'>" . $row['c_title'] . "</div>
                         </div>
                         </div>
@@ -137,14 +147,23 @@ if (isset($_POST['submit'])) {
                         <div class='row justify-content-center'>
                             <div class='col-lg-8'>
                             <div class='modal-body'>
-                                    <h2 class='text-uppercase'>" . $row['c_title'] . "</h2>
-                                    <img class='img-fluid d-block mx-auto' src='../static/img/proj.jfif' alt='prop-1' />
+                                    <h2 class='text-uppercase'>" . $row['c_title'] . "</h2>";
+                                    if($var == 0){
+                                        echo "<img class='img-fluid d-block mx-auto' src='../static/img/family.jpg' alt='prop-1'/>";
+                                    }
+                                    else if($var == 1){
+                                        echo "<img class='img-fluid d-block mx-auto' src='../static/img/food.jpg' alt='prop-1'/>";
+                                    }
+                                    else{
+                                        echo "<img class='img-fluid d-block mx-auto' src='../static/img/waste.jpg' alt='prop-1'/>";
+                                    }
+                                    echo "
                                     <p>" . $row['c_description'] . "</p>
                                     <ul class='list-inline'>
                                         <li>Date: " . $row['c_date'] . "</li>
                                     </ul>
                                     <button class='btn btn-danger' data-dismiss='modal' type='button'>
-                                    <i class='fas fa-times mr-1'></i>Close Project</button>
+                                    <i class='fas fa-times mr-1'></i>Close</button>
                                 </div>
                             </div>
                         </div>
@@ -155,7 +174,6 @@ if (isset($_POST['submit'])) {
         }
     }
     ?>
-
 
     <?php
     require "templates/footer.php";

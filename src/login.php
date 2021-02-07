@@ -3,12 +3,12 @@ session_start();
 require 'config.php';
 
 if (isset($_POST['submit'])) {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    // $message = "";
+    $email = htmlentities($_POST['email']);
+    $password = htmlentities($_POST['password']);
 
 	// Admin Panel 
 	if($email == "admin@admin.com" && $password == "123456"){
+		$_SESSION['isAdmin'] = true;
 		header('Location: admin.php');
 		return;
 	}

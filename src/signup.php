@@ -3,10 +3,10 @@ session_start();
 require 'config.php';
 
 if (isset($_POST['submit'])) {
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $confirmPassword = $_POST['confirmPassword'];
+    $username = htmlentities($_POST['username']);
+    $email = htmlentities($_POST['email']);
+    $password = htmlentities($_POST['password']);
+    $confirmPassword = htmlentities($_POST['confirmPassword']);
 
     $stmt = mysqli_query($conn, "SELECT * FROM volunteers WHERE username = '$username'");
     if (mysqli_num_rows($stmt) > 0) {
@@ -20,12 +20,19 @@ if (isset($_POST['submit'])) {
             header('Location: signup.php');
             return;
         } else {
-            $stmt = mysqli_query($conn, "INSERT INTO volunteers(username, email, password) VALUES('$username', '$email', '$password')");
-            $stmt = mysqli_query($conn, "SELECT * FROM volunteers WHERE username = '$username'");
-            $_SESSION['id'] = mysqli_fetch_assoc($stmt)['id'];
-            $_SESSION['username'] = mysqli_fetch_assoc($stmt)['username'];
-            header('Location: index.php');
-            return;
+            if($password != $confirmPassword){
+                $_SESSION['message'] = "Passwords do not match.";
+                header('Location: signup.php');
+                return;
+            }
+            else{
+                $stmt = mysqli_query($conn, "INSERT INTO volunteers(username, email, password) VALUES('$username', '$email', '$password')");
+                $stmt = mysqli_query($conn, "SELECT * FROM volunteers WHERE username = '$username'");
+                $_SESSION['id'] = mysqli_fetch_assoc($stmt)['id'];
+                $_SESSION['username'] = mysqli_fetch_assoc($stmt)['username'];
+                header('Location: index.php');
+                return;
+            }
         }
     }
 }

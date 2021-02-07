@@ -1,6 +1,12 @@
 <?php
 session_start();
 require "config.php";
+
+if(!isset($_SESSION['isAdmin'])){
+    header("Location: index.php");
+    return;
+}
+
 ?>
 
 <!doctype html>
