@@ -20,3 +20,8 @@ The following project has been made as part of Apscript Hackathon.
  - Database : MySQL
  - Web Server Stack : XAMPP
  - Frameworks/Libraries Used : Bootstrap, Jquery
+
+ ### Installation Instructions
+ - Put all the contents of the repository to your xampp/htdocs/
+ - Import Database from db folder to your phpmyadminpanel
+ - Navigate to localhost/W6-Data-Pirates/index.php (Assuming you haven't changed the repo name or manually navigate to localhost)
