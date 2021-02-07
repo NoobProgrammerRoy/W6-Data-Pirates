@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 07, 2021 at 12:39 PM
+-- Generation Time: Feb 07, 2021 at 04:06 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -40,7 +40,6 @@ CREATE TABLE `blogs` (
 --
 
 INSERT INTO `blogs` (`b_id`, `b_title`, `b_content`, `b_date`, `b_vid`) VALUES
-(1, 'My Personal Experience', 'Hi Royston Rodrigues. This is my story. Cheers.', '2021-02-06', 1),
 (7, 'Food Donation Drive', 'Food Donation Drive', '2021-02-07', 1);
 
 -- --------------------------------------------------------
@@ -67,6 +66,28 @@ INSERT INTO `campaigns` (`c_id`, `c_title`, `c_date`, `c_description`, `c_vid`) 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `contacts`
+--
+
+CREATE TABLE `contacts` (
+  `c_no` int(11) NOT NULL,
+  `c_name` varchar(45) NOT NULL,
+  `c_email` varchar(45) NOT NULL,
+  `c_message` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `contacts`
+--
+
+INSERT INTO `contacts` (`c_no`, `c_name`, `c_email`, `c_message`) VALUES
+(1, 'Royston Rodrigues', 'royston@gmail.com', 'Hello World'),
+(2, 'Ryanston Rodrigues', 'ryanston@gmail.com', 'Hello World'),
+(3, 'Parth Vora', 'parth@gmail.com', 'Hello World');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `volunteers`
 --
 
@@ -82,8 +103,7 @@ CREATE TABLE `volunteers` (
 --
 
 INSERT INTO `volunteers` (`id`, `username`, `email`, `password`) VALUES
-(1, 'roy', 'roy@gmail.com', '123456'),
-(11, 'parth', 'parth@gmail.com', '123');
+(1, 'roy', 'roy@gmail.com', '123456');
 
 --
 -- Indexes for dumped tables
@@ -104,6 +124,12 @@ ALTER TABLE `campaigns`
   ADD KEY `c_vid` (`c_vid`);
 
 --
+-- Indexes for table `contacts`
+--
+ALTER TABLE `contacts`
+  ADD PRIMARY KEY (`c_no`);
+
+--
 -- Indexes for table `volunteers`
 --
 ALTER TABLE `volunteers`
@@ -119,19 +145,25 @@ ALTER TABLE `volunteers`
 -- AUTO_INCREMENT for table `blogs`
 --
 ALTER TABLE `blogs`
-  MODIFY `b_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `b_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `campaigns`
 --
 ALTER TABLE `campaigns`
-  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `contacts`
+--
+ALTER TABLE `contacts`
+  MODIFY `c_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `volunteers`
 --
 ALTER TABLE `volunteers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Constraints for dumped tables
