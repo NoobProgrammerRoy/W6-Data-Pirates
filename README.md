@@ -25,9 +25,3 @@ The following project has been made as part of Apscript Hackathon.
  - Put all the contents of the repository to your xampp/htdocs/
  - Import Database from db folder to your phpmyadminpanel
  - Navigate to localhost/W6-Data-Pirates/index.php (Assuming you haven't changed the repo name or manually navigate to localhost)
-
- ### Progress Report
- - Royston Rodrigues:Backend
- - Vikas Prajapati: Frontend
- - Shrenik jangada: Frontend and backend
- - Parth Vora: Documentation and presentation
